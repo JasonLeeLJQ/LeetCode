@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
+#include <algorithm>
 using namespace std;
 
 class Solution{
@@ -80,12 +81,12 @@ public:
     }
 };
 
-int main(void) {
-	vector<vector<int> > array(3);
-	/*for (int i = 0; i<array.size(); i++)
+int main1(void) {
+	/* vector<vector<int> > array(3);
+	for (int i = 0; i<array.size(); i++)
 	{
 		array[i]
-	}*/
+	}
 
 	array[0].push_back(1);
 	array[0].push_back(2);
@@ -102,6 +103,33 @@ int main(void) {
 
 
 	Solution s;
-	cout << s.Find(10, array) << endl;
+	cout << s.Find(10, array) << endl; */
+    vector<pair<char ,int>> v;
+    v.push_back(pair<char,int>('a',1));
+    v.push_back(pair<char,int>('b',1));
+    v.push_back(pair<char,int>('c',1));
 
+    /* for(auto it=v.begin();it!=v.end();++it){
+        cout<<it->first<<" "<<it->second<<endl;
+    } */
+
+    char c='a';
+    string p= "123";
+    string s = p+c;
+    cout<<s<<endl;
+}
+
+int main(){
+	vector<int> numbers{22, 7, 93, 45, 19, 56, 88, 12, 8, 7, 15, 10};
+	int k=3;
+    //partial_sort(numbers.begin(),numbers.begin()+k,numbers.end());
+	//partial_sort(numbers.begin(),numbers.begin()+k,numbers.end(),[](int &a,int &b){if(a>b) return true;else return false;});
+    //nth_element(numbers.begin(),numbers.begin()+k+1,numbers.end());
+    nth_element(numbers.begin(),numbers.begin()+numbers.size()-1,numbers.end(),[](int &a, int &b){if(a>b) return true;else return false;});
+
+	for(int i=0;i<numbers.size();++i){
+		cout<<numbers[i]<<" ";
+	}
+	cout<<endl;
+	return 0;
 }
